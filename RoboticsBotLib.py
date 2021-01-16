@@ -3,8 +3,10 @@ import requests
 
 server = "gamer.com"
 
+
 class Robot:
-    def __init__(self, left_front_motor=None, right_front_motor=None, left_back_motor=None, right_back_motor=None, game="default"):
+    def __init__(self, left_front_motor=None, right_front_motor=None, left_back_motor=None, right_back_motor=None,
+                 game="default"):
         self.left_front = 0
         self.right_front = 0
         self.left_back = 0
@@ -32,7 +34,7 @@ class Robot:
             self.rightBackMotor = MotorKit().motor4
 
     def bot_tick(self):
-        if self.full_game_path + "status.cfg" is "true":
+        if requests.get(self.full_game_path + "status.cfg") is "true":
             self.leftFrontMotor.throttle = self.left_front
             self.rightFrontMotor.throttle = self.right_front
             self.leftBackMotor.throttle = self.left_back

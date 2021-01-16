@@ -1,9 +1,14 @@
-# from adafruit_motorkit import MotorKit
-# import RoboticsBotLib
-import requests
+# from RoboticsBotLib import Robot
+import asyncio
+from EasyControllerInput import Input
+import time
+from inputs import get_gamepad
+# bot = Robot()
 
-# kit = MotorKit()
-# bot = RoboticsBotLib.Robot()
 
-# kit.motor1.throttle = 1.0
-print(requests.get("http://api.evrythng.com/time").text)
+while True:
+    Input.update_inputs()
+    print("Y button: " + str(Input.right_up))
+    print("X button: " + str(Input.right_left))
+    print("B button: " + str(Input.right_right))
+    print("A button: " + str(Input.right_down))
